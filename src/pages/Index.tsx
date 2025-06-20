@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ExternalLink, Code, Database, Globe, Smartphone, Calendar, MapPin, Building, Server, GitBranch, Container, Monitor, Layers, Terminal, Wrench, Cloud, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,9 +6,23 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useTypewriter } from "@/hooks/useTypewriter";
 
 const Index = () => {
   const { toast } = useToast();
+  
+  const typewriterText = useTypewriter({
+    words: [
+      "Full-Stack Developer",
+      "React Specialist",
+      "Backend Engineer",
+      "Cloud Architect",
+      "DevOps Engineer"
+    ],
+    typeSpeed: 100,
+    deleteSpeed: 50,
+    delaySpeed: 2000,
+  });
 
   const skills = [
     { name: "React", icon: Code, category: "Frontend" },
@@ -184,14 +197,17 @@ const Index = () => {
             </span>
           </motion.h1>
           
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto h-8"
           >
-            Full-Stack Developer crafting digital experiences with modern technologies
-          </motion.p>
+            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              {typewriterText}
+            </span>
+            <span className="animate-pulse text-blue-400">|</span>
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
