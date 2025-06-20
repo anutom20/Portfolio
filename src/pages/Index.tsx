@@ -1,5 +1,6 @@
+
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ExternalLink, Code, Database, Globe, Smartphone, Calendar, MapPin, Building } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code, Database, Globe, Smartphone, Calendar, MapPin, Building, Server, GitBranch, Container, Monitor, Layers, Terminal, Wrench, Cloud, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,16 +14,32 @@ const Index = () => {
   const skills = [
     { name: "React", icon: Code, category: "Frontend" },
     { name: "TypeScript", icon: Code, category: "Frontend" },
-    { name: "Node.js", icon: Database, category: "Backend" },
-    { name: "Python", icon: Code, category: "Backend" },
+    { name: "JavaScript", icon: Code, category: "Frontend" },
+    { name: "Vue.js", icon: Code, category: "Frontend" },
+    { name: "HTML/CSS", icon: Monitor, category: "Frontend" },
+    { name: "Tailwind CSS", icon: Layers, category: "Frontend" },
+    { name: "Node.js", icon: Server, category: "Backend" },
+    { name: "Python", icon: Terminal, category: "Backend" },
+    { name: "Express.js", icon: Server, category: "Backend" },
+    { name: "FastAPI", icon: Server, category: "Backend" },
+    { name: "REST APIs", icon: Globe, category: "Backend" },
+    { name: "GraphQL", icon: Database, category: "Backend" },
     { name: "PostgreSQL", icon: Database, category: "Database" },
     { name: "MongoDB", icon: Database, category: "Database" },
-    { name: "AWS", icon: Globe, category: "Cloud" },
-    { name: "Docker", icon: Globe, category: "DevOps" },
-    { name: "Kubernetes", icon: Globe, category: "DevOps" },
-    { name: "Git", icon: Code, category: "Tools" },
+    { name: "Redis", icon: Database, category: "Database" },
+    { name: "MySQL", icon: Database, category: "Database" },
+    { name: "AWS", icon: Cloud, category: "Cloud" },
+    { name: "Azure", icon: Cloud, category: "Cloud" },
+    { name: "Google Cloud", icon: Cloud, category: "Cloud" },
+    { name: "Docker", icon: Container, category: "DevOps" },
+    { name: "Kubernetes", icon: Settings, category: "DevOps" },
+    { name: "Jenkins", icon: Settings, category: "DevOps" },
+    { name: "GitHub Actions", icon: GitBranch, category: "DevOps" },
+    { name: "Terraform", icon: Settings, category: "DevOps" },
+    { name: "Git", icon: GitBranch, category: "Tools" },
     { name: "VS Code", icon: Code, category: "Tools" },
-    { name: "Jenkins", icon: Globe, category: "DevOps" }
+    { name: "Postman", icon: Globe, category: "Tools" },
+    { name: "Figma", icon: Wrench, category: "Tools" }
   ];
 
   const workExperience = [
@@ -182,11 +199,11 @@ const Index = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="flex justify-center space-x-6"
           >
-            <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300">
+            <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transform hover:scale-105 transition-all duration-300">
               <Github className="mr-2 h-5 w-5" />
               GitHub
             </Button>
-            <Button size="lg" variant="outline" className="border-gray-600 text-white hover:bg-white hover:text-black transform hover:scale-105 transition-all duration-300">
+            <Button size="lg" variant="outline" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transform hover:scale-105 transition-all duration-300">
               <Mail className="mr-2 h-5 w-5" />
               Contact Me
             </Button>
@@ -243,11 +260,11 @@ const Index = () => {
                   When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or sharing knowledge with the developer community.
                 </p>
                 <div className="flex space-x-4">
-                  <Button variant="outline" size="sm" className="border-gray-600 text-white hover:bg-white hover:text-black">
+                  <Button variant="outline" size="sm" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white">
                     <Linkedin className="mr-2 h-4 w-4" />
                     LinkedIn
                   </Button>
-                  <Button variant="outline" size="sm" className="border-gray-600 text-white hover:bg-white hover:text-black">
+                  <Button variant="outline" size="sm" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white">
                     <Mail className="mr-2 h-4 w-4" />
                     Email
                   </Button>
@@ -429,11 +446,11 @@ const Index = () => {
                         ))}
                       </div>
                       <div className="flex space-x-3">
-                        <Button size="sm" variant="outline" className="border-gray-600 text-white hover:bg-white hover:text-black">
+                        <Button size="sm" variant="outline" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white">
                           <Github className="mr-2 h-4 w-4" />
                           Code
                         </Button>
-                        <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+                        <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
                           <ExternalLink className="mr-2 h-4 w-4" />
                           Live Demo
                         </Button>
@@ -510,7 +527,7 @@ const Index = () => {
                     />
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                      className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
                     >
                       Send Message
                     </Button>
