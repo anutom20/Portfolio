@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ExternalLink, Code, Database, Globe, Smartphone } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code, Database, Globe, Smartphone, Calendar, MapPin, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -12,12 +11,45 @@ const Index = () => {
   const { toast } = useToast();
 
   const skills = [
-    { name: "React", level: 90, icon: Code },
-    { name: "TypeScript", level: 85, icon: Code },
-    { name: "Node.js", level: 80, icon: Database },
-    { name: "Python", level: 75, icon: Code },
-    { name: "PostgreSQL", level: 70, icon: Database },
-    { name: "AWS", level: 65, icon: Globe },
+    { name: "React", icon: Code, category: "Frontend" },
+    { name: "TypeScript", icon: Code, category: "Frontend" },
+    { name: "Node.js", icon: Database, category: "Backend" },
+    { name: "Python", icon: Code, category: "Backend" },
+    { name: "PostgreSQL", icon: Database, category: "Database" },
+    { name: "MongoDB", icon: Database, category: "Database" },
+    { name: "AWS", icon: Globe, category: "Cloud" },
+    { name: "Docker", icon: Globe, category: "DevOps" },
+    { name: "Kubernetes", icon: Globe, category: "DevOps" },
+    { name: "Git", icon: Code, category: "Tools" },
+    { name: "VS Code", icon: Code, category: "Tools" },
+    { name: "Jenkins", icon: Globe, category: "DevOps" }
+  ];
+
+  const workExperience = [
+    {
+      title: "Senior Full Stack Developer",
+      company: "TechCorp Solutions",
+      location: "San Francisco, CA",
+      period: "2021 - Present",
+      description: "Led development of scalable web applications serving 100K+ users. Architected microservices infrastructure and mentored junior developers.",
+      technologies: ["React", "Node.js", "AWS", "Docker", "PostgreSQL"]
+    },
+    {
+      title: "Software Developer",  
+      company: "StartupXYZ",
+      location: "Austin, TX",
+      period: "2019 - 2021",
+      description: "Built responsive web applications and RESTful APIs. Collaborated with cross-functional teams to deliver features on tight deadlines.",
+      technologies: ["Vue.js", "Python", "MongoDB", "Git"]
+    },
+    {
+      title: "Junior Developer",
+      company: "Digital Agency Pro",
+      location: "Remote",
+      period: "2018 - 2019", 
+      description: "Developed client websites and maintained existing codebases. Gained experience in modern web development practices and agile methodologies.",
+      technologies: ["JavaScript", "PHP", "MySQL", "WordPress"]
+    }
   ];
 
   const projects = [
@@ -69,6 +101,8 @@ const Index = () => {
     }
   };
 
+  const skillCategories = ["Frontend", "Backend", "Database", "Cloud", "DevOps", "Tools"];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden">
       {/* Navigation */}
@@ -87,7 +121,7 @@ const Index = () => {
               animate={{ opacity: 1, x: 0 }}
               className="hidden md:flex space-x-8"
             >
-              {["About", "Skills", "Projects", "Contact"].map((item) => (
+              {["About", "Experience", "Skills", "Projects", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -229,6 +263,73 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Work Experience Section */}
+      <section id="experience" className="py-20 px-6">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            >
+              Work Experience
+            </motion.h2>
+            
+            <motion.div variants={fadeInUp} className="space-y-8">
+              {workExperience.map((job, index) => (
+                <motion.div
+                  key={job.title + job.company}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300">
+                    <CardHeader>
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div>
+                          <CardTitle className="text-white text-xl mb-2">{job.title}</CardTitle>
+                          <div className="flex items-center gap-4 text-gray-300">
+                            <div className="flex items-center gap-2">
+                              <Building className="h-4 w-4 text-blue-400" />
+                              <span>{job.company}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <MapPin className="h-4 w-4 text-blue-400" />
+                              <span>{job.location}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-400">
+                          <Calendar className="h-4 w-4 text-blue-400" />
+                          <span className="whitespace-nowrap">{job.period}</span>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-gray-300 mb-4 text-base leading-relaxed">
+                        {job.description}
+                      </CardDescription>
+                      <div className="flex flex-wrap gap-2">
+                        {job.technologies.map((tech) => (
+                          <Badge key={tech} variant="secondary" className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6 bg-black/30">
         <div className="container mx-auto max-w-6xl">
@@ -245,36 +346,33 @@ const Index = () => {
               Skills & Technologies
             </motion.h2>
             
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300 hover:scale-105">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center space-x-3">
-                        <skill.icon className="h-8 w-8 text-blue-400" />
-                        <CardTitle className="text-white">{skill.name}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
+            <motion.div variants={fadeInUp} className="space-y-8">
+              {skillCategories.map((category, categoryIndex) => (
+                <div key={category}>
+                  <h3 className="text-xl font-semibold text-white mb-4 text-center">{category}</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {skills
+                      .filter(skill => skill.category === category)
+                      .map((skill, index) => (
                         <motion.div
-                          className="bg-gradient-to-r from-blue-400 to-purple-500 h-2 rounded-full"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: index * 0.1 }}
+                          key={skill.name}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: (categoryIndex * 0.1) + (index * 0.05) }}
                           viewport={{ once: true }}
-                        />
-                      </div>
-                      <span className="text-sm text-gray-400">{skill.level}%</span>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                        >
+                          <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300 hover:scale-105">
+                            <CardContent className="p-4">
+                              <div className="flex items-center space-x-3">
+                                <skill.icon className="h-6 w-6 text-blue-400" />
+                                <span className="text-white font-medium">{skill.name}</span>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
+                  </div>
+                </div>
               ))}
             </motion.div>
           </motion.div>
